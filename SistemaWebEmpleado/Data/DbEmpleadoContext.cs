@@ -1,6 +1,6 @@
 ﻿namespace SistemaWebEmpleado.Data
 {
-    public class DbEmpleado
+    public class DbEmpleadoContext
     {
     }
 }
