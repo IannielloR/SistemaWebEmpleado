@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace SistemaWebEmpleado.Controllers
 {
@@ -6,6 +7,8 @@ namespace SistemaWebEmpleado.Controllers
     {
         public IActionResult Index()
         {
+            ViewBag.Nombre = "Bienvenido al sistema de Empleados";
+            ViewBag.Fecha = DateTime.Now.ToString();
             return View();
         }
     }

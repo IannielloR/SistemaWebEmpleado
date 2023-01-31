@@ -1,15 +1,38 @@
-﻿
-@{
-    Layout = null;
-}
+﻿@model IEnumerable<SistemaWebEmpleado.Models.Empleado>
+@Html.ActionLink("Nuevo","Create","Empleado")
+<table>
+    <tr>
+        <th asp-for ="Nombre"></th>
+        <th asp-for="Apellido"></th>
+        <th asp-for="DNI"></th>
+        <th asp-for="Legajo"></th>
+        <th asp-for="FechaNacimiento"></th>
+        <th asp-for="Titulo"></th>
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-</body>
-</html>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+                <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+                </td>
+                    <td>
+                @Html.DisplayFor(modelItem => item.DNI)
+                </td>
+                    <td>
+                @Html.DisplayFor(modelItem => item.Legajo)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaNacimiento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+        </tr>
+    }
+
+</table>

@@ -59,7 +59,64 @@ namespace SistemaWebEmpleado.Controllers
         {
             return context.Empleados.Find(id);
         }
-        
+
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            var empleado = TraerUna(id);
+            if (empleado == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return View("Delete", empleado);
+            }
+
+        }
+
+        [ActionName("Delete")]
+        [HttpPost]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Empleado empleado = TraerUna(id);
+            if (empleado == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                context.Empleados.Remove(empleado);
+                context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var empleado = context.Empleados.Find(id);
+            if (empleado == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return View("Edit", empleado);
+            }
+        }
+
+
+        [ActionName("Edit")]
+        [HttpPost]
+        public ActionResult EditConfirmed(Empleado empleado)
+        {
+
+            context.Entry(empleado).State = EntityState.Modified;
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
 
